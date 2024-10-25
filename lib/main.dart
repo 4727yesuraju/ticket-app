@@ -12,14 +12,10 @@ class MyApp extends StatelessWidget { //stateless means no activity or dead
 
   @override
   Widget build(BuildContext context) {  //when you inherit any class must have a build method
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: ButtonNavBar()
-    );
+    return const MaterialApp(
+         debugShowCheckedModeBanner: false,
+         home:ButtonNavBar(),
+      );
   }
 }
 

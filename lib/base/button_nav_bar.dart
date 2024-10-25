@@ -1,6 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ticket_app/screens/home_screen.dart';
 
 class ButtonNavBar extends StatefulWidget {
   const ButtonNavBar({super.key});
@@ -12,7 +12,7 @@ class ButtonNavBar extends StatefulWidget {
 class _ButtonNavBarState extends State<ButtonNavBar> {
 
   final appScreens = [
-    const Center(child : Text("Home")),
+    const HomeScreen(),
     const Center(child : Text("Search")),
     const Center(child : Text("Tickets")),
     const Center(child : Text("Profile")),
@@ -24,15 +24,11 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
     setState(() {
       _selectedIndex = index;
     });
-    print("tapped : $_selectedIndex");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title :const Text("My tickets"),
-        ),
         body : appScreens[_selectedIndex],
 
         bottomNavigationBar : BottomNavigationBar(
