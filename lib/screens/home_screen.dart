@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
             padding : const EdgeInsets.symmetric(horizontal : 20  ),
             child : Column(
               children : [
-
                 Row(
                   mainAxisAlignment : MainAxisAlignment.spaceBetween,
                   children : [
@@ -63,14 +62,13 @@ class HomeScreen extends StatelessWidget {
                       Text("search")
                   ]
                 )
-                )
-
-                
+                ),
+                const SizedBox(height : 40),
+                const AppDoubleText(bigText: 'upcoming Flights',smallText: 'View all',)
               ]
           )
           ),
-          const SizedBox(height : 40),
-          const AppDoubleText(),
+
         ]
       )
     );
