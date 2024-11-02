@@ -3,6 +3,8 @@ import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/base/widgets/big_circle.dart';
 import 'package:ticket_app/base/widgets/big_dot.dart';
+import 'package:ticket_app/base/widgets/text_file_fourth.dart';
+import 'package:ticket_app/base/widgets/text_file_third.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({super.key});
@@ -27,10 +29,7 @@ class TicketView extends StatelessWidget {
                   children : [
                     Row(
                       children : [
-                        Text(
-                          "NYC",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
+                          const TextFileThird(text : "NYC"),
                           Expanded(child : Container()),
                           const BigDot(),
                           Expanded(child : Stack(
@@ -46,41 +45,36 @@ class TicketView extends StatelessWidget {
                           )),
                           const BigDot(),
                           Expanded(child : Container()),
-                        Text(
-                          "NYC",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
+                        const TextFileThird(text : "LDN"),
                       ]
                     ),
                     const SizedBox(height : 3),
                     Row(
                       children : [
-                        Text(
-                          "New-York",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
+                        const SizedBox(
+                          width : 100,
+                          child: TextFileFourth(text : "New York"),
+                        ),
                           Expanded(child : Container()),
-                          Text(
-                          "8H 30M",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
+                          const TextFileFourth(text : "8H 30M"),
                           Expanded(child : Container()),
-                        Text(
-                          "Londom",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
+                        const SizedBox(
+                          width : 100,
+                          child: TextFileFourth(text : "London",align : TextAlign.end),
+                        ),
                       ]
                     )
                   ]
               )
             ),
+            //circles and dots
             Container(
               color : AppStyles.ticketOrange,
-              child : Row(
+              child : const Row(
                 children: [
                    BigCircle(isRight : false),
                    Expanded(
-                    child:Container() ,
+                    child:AppLayoutbuilderWidget(randomDivider: 16 ,width : 6),
                    ),
                    BigCircle(isRight : true),
                 ],
@@ -92,54 +86,65 @@ class TicketView extends StatelessWidget {
                   color : AppStyles.ticketOrange,
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21))
                 ),
-                child : Column(
+                child : const Column(
                   children : [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children : [
-                        Text(
-                          "NYC",
+                         Column(
+                           children : [
+                              TextFileThird(text : "1 May"),
+                              SizedBox(height : 5),
+                              TextFileThird(text : "DATE")
+                           ]
+                         ),
+                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                           children : [
+                              TextFileThird(text : "1 May"),
+                              SizedBox(height : 5),
+                              TextFileThird(text : "DATE")
+                           ]
+                         ),
+                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                           children : [
+                              TextFileThird(text : "1 May"),
+                              SizedBox(height : 5),
+                              TextFileThird(text : "DATE")
+                           ]
+                         ),
+                         /*  Expanded(child : Container()),
+                          Text(
+                          "1 MAY",
                           style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
                           ),
                           Expanded(child : Container()),
-                          const BigDot(),
-                          Expanded(child : Stack(
-                            children: [
-                              const SizedBox(
-                                height : 24,
-                                child:AppLayoutbuilderWidget(randomDivider: 6,),
-                              ),
-                              Center(child : Transform.rotate(angle : 1.57,
-                              child : const Icon(Icons.local_airport_rounded,color : Colors.white)),)
-              
-                            ],
-                          )),
-                          const BigDot(),
-                          Expanded(child : Container()),
                         Text(
-                          "NYC",
+                          "23",
                           style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
-                      ]
+                          ), */
+                      ] 
                     ),
-                    const SizedBox(height : 3),
-                    Row(
+                    /* const SizedBox(height : 3), */
+                    /* Row(
                       children : [
                         Text(
-                          "New-York",
+                          "Date",
                           style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
                           ),
                           Expanded(child : Container()),
                           Text(
-                          "8H 30M",
+                          "Departure time",
                           style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
                           ),
                           Expanded(child : Container()),
                         Text(
-                          "Londom",
+                          "Number",
                           style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
                           ),
                       ]
-                    )
+                    ) */
                   ]
               )
             )
