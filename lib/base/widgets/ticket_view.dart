@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/base/widgets/big_circle.dart';
 import 'package:ticket_app/base/widgets/big_dot.dart';
@@ -7,7 +8,8 @@ import 'package:ticket_app/base/widgets/text_file_fourth.dart';
 import 'package:ticket_app/base/widgets/text_file_third.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
+  final Map<String,dynamic> ticket;
+  const TicketView({super.key,required this.ticket});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,14 @@ class TicketView extends StatelessWidget {
                   borderRadius: const BorderRadius.only(topLeft: Radius.circular(21),topRight: Radius.circular(21))
                 ),
                 child : Column(
+                  //ticket top
                   children : [
                     Row(
                       children : [
-                          const TextFileThird(text : "NYC"),
+                          TextFileThird(text : ticket['from']['code']),
                           Expanded(child : Container()),
                           const BigDot(),
+                          //plane icons
                           Expanded(child : Stack(
                             children: [
                               const SizedBox(
@@ -45,22 +49,22 @@ class TicketView extends StatelessWidget {
                           )),
                           const BigDot(),
                           Expanded(child : Container()),
-                        const TextFileThird(text : "LDN"),
+                          TextFileThird(text : ticket['to']['code']),
                       ]
                     ),
                     const SizedBox(height : 3),
                     Row(
                       children : [
-                        const SizedBox(
+                        SizedBox(
                           width : 100,
-                          child: TextFileFourth(text : "New York"),
+                          child: TextFileFourth(text : ticket['from']['name']),
                         ),
                           Expanded(child : Container()),
-                          const TextFileFourth(text : "8H 30M"),
+                          TextFileFourth(text : ticket['flying_time']),
                           Expanded(child : Container()),
-                        const SizedBox(
+                        SizedBox(
                           width : 100,
-                          child: TextFileFourth(text : "London",align : TextAlign.end),
+                          child: TextFileFourth(text : ticket['to']['name'],align : TextAlign.end),
                         ),
                       ]
                     )
@@ -86,65 +90,18 @@ class TicketView extends StatelessWidget {
                   color : AppStyles.ticketOrange,
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(21),bottomRight: Radius.circular(21))
                 ),
+
+                //bottom ticket
                 child : const Column(
                   children : [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children : [
-                         Column(
-                           children : [
-                              TextFileThird(text : "1 May"),
-                              SizedBox(height : 5),
-                              TextFileThird(text : "DATE")
-                           ]
-                         ),
-                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                           children : [
-                              TextFileThird(text : "1 May"),
-                              SizedBox(height : 5),
-                              TextFileThird(text : "DATE")
-                           ]
-                         ),
-                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                           children : [
-                              TextFileThird(text : "1 May"),
-                              SizedBox(height : 5),
-                              TextFileThird(text : "DATE")
-                           ]
-                         ),
-                         /*  Expanded(child : Container()),
-                          Text(
-                          "1 MAY",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
-                          Expanded(child : Container()),
-                        Text(
-                          "23",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ), */
+                         AppColumnTextLayout(topText: "1 MAY", bottomText: "DATE",alignment: CrossAxisAlignment.start),
+                         AppColumnTextLayout(topText: "08:00 AM", bottomText: "Departure time",alignment: CrossAxisAlignment.center),
+                         AppColumnTextLayout(topText: "23", bottomText: "Number",alignment: CrossAxisAlignment.end)
                       ] 
                     ),
-                    /* const SizedBox(height : 3), */
-                    /* Row(
-                      children : [
-                        Text(
-                          "Date",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
-                          Expanded(child : Container()),
-                          Text(
-                          "Departure time",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
-                          Expanded(child : Container()),
-                        Text(
-                          "Number",
-                          style : AppStyles.headLineStyle3.copyWith(color : Colors.white)
-                          ),
-                      ]
-                    ) */
                   ]
               )
             )
