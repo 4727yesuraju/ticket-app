@@ -9,7 +9,8 @@ import 'package:ticket_app/base/widgets/text_file_third.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String,dynamic> ticket;
-  const TicketView({super.key,required this.ticket});
+  final bool wholeScreen;
+  const TicketView({super.key,required this.ticket,this.wholeScreen = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +19,11 @@ class TicketView extends StatelessWidget {
       width : size.width * 0.85,
       height : 179,
       child : Container( 
-        margin : const  EdgeInsets.only(right : 16),
+        margin :EdgeInsets.only(right : wholeScreen == true ? 0 : 16),
         child : Column(
           children: [
             Container(
-                padding : const EdgeInsets.all(16),
+                padding :  const EdgeInsets.all(16),
                 decoration : BoxDecoration(
                   color : AppStyles.ticketBlue,
                   borderRadius: const BorderRadius.only(topLeft: Radius.circular(21),topRight: Radius.circular(21))
@@ -92,14 +93,14 @@ class TicketView extends StatelessWidget {
                 ),
 
                 //bottom ticket
-                child : const Column(
+                child : Column(
                   children : [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children : [
-                         AppColumnTextLayout(topText: "1 MAY", bottomText: "DATE",alignment: CrossAxisAlignment.start),
-                         AppColumnTextLayout(topText: "08:00 AM", bottomText: "Departure time",alignment: CrossAxisAlignment.center),
-                         AppColumnTextLayout(topText: "23", bottomText: "Number",alignment: CrossAxisAlignment.end)
+                         AppColumnTextLayout(topText: ticket['date'], bottomText: "DATE",alignment: CrossAxisAlignment.start),
+                         AppColumnTextLayout(topText: ticket['departure_time'], bottomText: "Departure time",alignment: CrossAxisAlignment.center),
+                         AppColumnTextLayout(topText: ticket['number'].toString(), bottomText: "Number",alignment: CrossAxisAlignment.end)
                       ] 
                     ),
                   ]
