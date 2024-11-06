@@ -8,6 +8,7 @@ class AppStyles {
   static Color textColor = const Color(0xff3b3b3b);
   static Color ticketBlue = const Color(0xFF526799);
   static Color ticketOrange = const Color(0xFFF37B67);
+  static Color kakiColor = const Color(0xFFd2bdb6);
 
   static TextStyle headLineStyle = TextStyle( //dinamic widget due to it depend's on textColor
       fontSize : 16,
