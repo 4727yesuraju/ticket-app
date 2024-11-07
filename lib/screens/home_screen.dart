@@ -9,6 +9,7 @@ import 'package:ticket_app/screens/widgets/hotel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -92,11 +93,7 @@ class HomeScreen extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [
-                      const Hotel(),
-                      const Hotel(),
-                      
-                    ]
+                    children: hotelList.map((singleHotel)=>Hotel(hotel : singleHotel)).toList()
                   ),
                 )
               ]
